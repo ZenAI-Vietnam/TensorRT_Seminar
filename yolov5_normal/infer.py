@@ -6,7 +6,7 @@ import pycuda.driver as cuda
 import pycuda.autoinit
 import time
 
-from utils import load_engine, HostDeviceMemory, cosine_similarity
+from tool import load_engine, HostDeviceMemory, cosine_similarity
 
 img = torch.randn((1, 3, 640 ,640))
 
