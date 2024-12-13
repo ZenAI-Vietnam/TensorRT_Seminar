@@ -1,4 +1,4 @@
-from model import SimpleCNN
+from simpleCNN.model import SimpleCNN
 import torch
 
 model = SimpleCNN()
