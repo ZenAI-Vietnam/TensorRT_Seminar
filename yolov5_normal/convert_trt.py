@@ -1,5 +1,6 @@
 import tensorrt as trt
 import torch
+from tool import Int8Calibrator, CalibrationDataLoader
 
 logger = trt.Logger(trt.Logger.INFO)
 builder = trt.Builder(logger)
@@ -13,8 +14,8 @@ config.set_memory_pool_limit(trt.MemoryPoolType.WORKSPACE, 1 << 30)
 config.set_flag(trt.BuilderFlag.FP16)
 
 # #Dynamic Batch Size
-# flag = 1 << int(trt.NetworkDefinitionCreationFlag.EXPLICIT_BATCH)
-network = builder.create_network()
+flag = 1 << int(trt.NetworkDefinitionCreationFlag.EXPLICIT_BATCH)
+network = builder.create_network(flag)
 parser = trt.OnnxParser(network, logger)
 
 success = parser.parse_from_file("yolov5s.onnx")
